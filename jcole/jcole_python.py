@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 print("Welcome To 'How Well Do You Know Rap Artist J.Cole???'\n")
-
 class Question:
-    def __init__(self, prompt, answer): 
+    def __init__(self, prompt, answer):
         self.prompt = prompt
         self.answer = answer
 
+# All of 11 of the quiz questions
 question_prompts = [
     "What does the J in J. Cole's rap name stand for?\n(a) Jason\n(b) Jamie\n(c) Jermaine\n(d) Jackie\n\n", 
     "Where is J. Cole from?\n(a) New York, New York\n(b) Fayetteville, North Carolina\n(c) Chicago, Illinois\n(d) Memphis, Tennessee\n\n",
@@ -21,6 +21,7 @@ question_prompts = [
 
 ]
 
+# The questions along with the correct answers
 questions = [
     Question(question_prompts[0], "c"),
     Question(question_prompts[1], "b"),
@@ -36,15 +37,25 @@ questions = [
 
 ]
 
-def run_quiz(questions):
+# logic of how the quiz operates
+def main(questions):
+    #while
     score = 0
     for question in questions:
-        answer = input(question.prompt).lower()
-        if answer == question.answer:
-            score += 1
-            print("Correct! 'If you ain’t aim too high, then you aim too low!' +1 point\n")
-        elif answer != question.answer:
-            print("Sorry, wrong answer! 'It’s beauty in the struggle, ugliness in the success.' No points added\n")
+        while True:
+            answer = input(question.prompt).lower()
+            if answer == question.answer: #question[answer]:
+                score += 1
+                print("CORRECT!! 'If you ain’t aim too high, then you aim too low!' +1 point\n")
+                break
+            elif answer == "":
+                print("You must type in an answer!")
+            elif answer not in ["a","b","c","d"]:
+                print("ANSWER INVALID! Choose A, B, C, or D\n")
+            elif answer != question.answer:
+                print("SORRY, WRONG ANSWER! :( 'It’s beauty in the struggle, ugliness in the success.' No points added\n")
+                break
     print("You scored", score, "out of", len(questions),"!")
 
-run_quiz(questions)
+if __name__ == "__main__":
+    main(questions)
