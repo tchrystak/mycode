@@ -39,7 +39,6 @@ questions = [
 
 # logic of how the quiz operates
 def main(questions):
-    #while
     score = 0
     for question in questions:
         while True:
