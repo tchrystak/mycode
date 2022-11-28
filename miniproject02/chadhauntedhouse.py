@@ -22,7 +22,7 @@ def showStatus():
   print('---------------------------')
   #item
   if "item" in rooms[currentRoom]:
-    print('You see ' + rooms[currentRoom]['item'])
+    print('YOU SEE ' + rooms[currentRoom]['item'])
   print('MAP:')
   for x in rooms[currentRoom].keys():
       if x != "item":
@@ -30,65 +30,75 @@ def showStatus():
   #Player's current status
   print('---------------------------')
   print('YOU ARE IN THE: ' + currentRoom)
-  #print the current inventory
+  #Player's current inventory
   print('Inventory : ' + str(inventory))
 
 
 #an inventory, which is initially empty
 inventory = []
 
-#a dictionary linking a room to other rooms
 ## A dictionary linking a room to other rooms
 rooms = {
 
             'Hall' : {
+                  'disc'  : '',
                   'south' : 'Kitchen',
                   'east'  : 'Dining Room',
                   'west'  : 'Upstairs Hall'
                 },
             'Kitchen' : {
+                  'disc'  : '',
                   'north' : 'Hall',
-                  'item'  : 'Python Monster',
+                  'item'  : 'Python Monster'
                 },
-            'Upstairs Hall' : { 
+            'Upstairs Hall' : {
+                  'disc'  : '',
                   'east'  : 'Hall',
                   'west'  : 'Nursery',
                   'north' : 'Primary Bedroom',
                   'south' : 'Library'
                 },
             'Nursery' : {
+                  'disc'  : '',
                   'east'  : 'Upstairs Hall',
                   'item'  : 'a dirty diaper'
                   },
             'Library' : {
+                  'disc'  : '',
                   'north' : 'Upstairs Hall',
-                  'item'  : 'book',
+                  'item'  : 'a book',
                   'west'  : 'Secret Entry'
                   },
             'Secret Entry' : {
+                  'disc'  : '',
                   'east'  : 'Library',
                   'item'  : 'wifey'
                   },
             'Primary Bedroom' : {
+                  'disc'  : '',
                   'south' : 'Upstairs Hall',
                   'item'  : 'the car keys',
                   'north' : 'Bathroom',
                   'west'  : 'Open Window'
                   },
             'Open Window' : {
-                  'east'  : 'Open Window',
+                  'disc'  : '',
+                  'east'  : 'Primary Bedroom',
                   'item'  : 'Python Monster'
                   },
             'Bathroom' : {
+                  'disc'  : '',
                   'south' : 'Primary Bedroom',
                   'item'  : 'Python Monster'
                   },
 
             'Dining Room' : {
+                  'disc' : '',
                   'west' : 'Hall',
-                  'south': 'Garage',
+                  'south': 'Garage'
                },
             'Garage' : {
+                  'disc'  : '',
                   'north' : 'Dining Room',
                   'item'  : 'a Tesla X'
                },
@@ -133,17 +143,17 @@ while True:
       #add the item to their inventory
       inventory += [move[1]]
       #display a helpful message
-      print(move[1] + ' got!')
+      print(move[1] + ' picked up!')
       #delete the item from the room
       del rooms[currentRoom]['item']
     #otherwise, if the item isn't there to get
     else:
       #tell them they can't get it
-      print('Can\'t get ' + move[1] + '!')
+      print('Can\'t pick up ' + move[1] + '!')
       
   ## How a player wins
   if currentRoom == 'Garage' and 'car keys' in inventory and 'wifey' in inventory:
-    print('You and your wife escaped the house... YOU WIN!')
+    print('You and your wife escaped the house... YOU WIN!!!')
     break
 
   ## If a player enters a room with a monster
@@ -151,10 +161,12 @@ while True:
     if "dirty diaper" in inventory:
         print('You threw the dirty diaper at the Python Monster...DARN YOU CHAD!! I HATE DIRTY DIAPERS!!')
         del rooms[currentRoom]['item']
+        inventory.remove("dirty diaper")
         continue
     elif "book" in inventory:
         print('You found a code to delete the Python Monster...NOOOOOO, NOT THE SECRET CODE!! AHHHH.,,.,.,ZAP!')
         del rooms[currentRoom]['item']
+        inventory.remove("book")
         continue
     else:
         print('HAHAHA, I GOT YOU... GAME OVER! - The Python Monster')
