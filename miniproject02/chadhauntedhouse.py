@@ -72,7 +72,12 @@ rooms = {
             'Primary Bedroom' : {
                   'south' : 'Upstairs Hall',
                   'item'  : 'the car keys',
-                  'north' : 'Bathroom'
+                  'north' : 'Bathroom',
+                  'west'  : 'Open Window'
+                  },
+            'Open Window' : {
+                  'east'  : 'Open Window',
+                  'item'  : 'Python Monster'
                   },
             'Bathroom' : {
                   'south' : 'Primary Bedroom',
@@ -136,7 +141,7 @@ while True:
       #tell them they can't get it
       print('Can\'t get ' + move[1] + '!')
       
-  ## Define how a player can win
+  ## How a player wins
   if currentRoom == 'Garage' and 'car keys' in inventory and 'wifey' in inventory:
     print('You and your wife escaped the house... YOU WIN!')
     break
