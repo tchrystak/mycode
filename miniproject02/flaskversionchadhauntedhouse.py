@@ -30,63 +30,74 @@ rooms = {
                   'desc'  : 'You wake up and find yourself in an old, dusty, and rusty house. You oddly remember that your wife is missing and you need to find her. You aggressively start looking around the house.',
                   'south' : 'Kitchen',
                   'east'  : 'Dining Room',
-                  'west'  : 'Upstairs Hall'
+                  'west'  : 'Upstairs Hall',
+                  'pic'   : 'hall.jpg'
                 },
             'Kitchen' : {
-                  'desc'  : 'It doesn\'t look like the kitchen has been used in years and it smells disgusting. It doesn\'t look like there is anything to pick up in here.',
+                  'desc'  : 'ITS THE PYTHON MONSTER!!',
                   'north' : 'Hall',
-                  'item'  : 'Python Monster'
+                  'item'  : 'Python Monster',
+                  'pic'   : 'kitchen.jpg'
                 },
             'Upstairs Hall' : {
                   'desc'  : 'It looks like there is a creepy staircase that leads to the second floor...You can hear faintly someone yelling for help. Let\'s check each room.',
                   'east'  : 'Hall',
                   'west'  : 'Nursery',
                   'north' : 'Primary Bedroom',
-                  'south' : 'Library'
+                  'south' : 'Library',
+                  'pic'   : 'upstairs_hallway.jpg'
                 },
             'Nursery' : {
                   'desc'  : 'The Nursery smells like a barn...you look around and find a dirty diaper. YUCK!',
                   'east'  : 'Upstairs Hall',
-                  'item'  : 'a dirty diaper'
+                  'item'  : 'a dirty diaper',
+                  'pic'   : 'nursery.jpg'
                   },
             'Library' : {
                   'desc'  : 'As you enter the library, you see a book with the words PYTHON on it. Suddenly, the faint yells for help get louder. You start searching around..',
                   'north' : 'Upstairs Hall',
                   'item'  : 'a book',
-                  'west'  : 'Secret Entry'
+                  'west'  : 'Secret Entry',
+                  'pic'   : 'library.jpg'
                   },
             'Secret Entry' : {
                   'desc'  : 'Inside the Secret Entry, you find your hopeless and scared wife happy to see you!',
                   'east'  : 'Library',
-                  'item'  : 'wifey'
+                  'item'  : 'wifey',
+                  'pic'   : 'secretentry.jpeg'
                   },
             'Primary Bedroom' : {
                   'desc'  : 'Inside the Primary Bedroom, you find a tesla key fob. There also seems to be an open window...possible escape route? There is also a bathroom connected to the room.',
                   'south' : 'Upstairs Hall',
                   'item'  : 'the car keys',
                   'north' : 'Bathroom',
-                  'west'  : 'Open Window'
+                  'west'  : 'Open Window',
+                  'pic'   : 'primary_bedroom.jpg'
                   },
             'Open Window' : {
                   'desc'  : 'Outside the window is a tall fence with a lock that reads NO WAY OUT',
                   'east'  : 'Primary Bedroom',
-                  'item'  : 'Python Monster'
+                  'item'  : 'Python Monster',
+                  'pic'   : 'open_window.jpg'
                   },
             'Bathroom' : {
-                  'desc'  : 'It smells like someone died in here!',
+                  'desc'  : 'ITS THE PYTHON MONSTER!!!',
                   'south' : 'Primary Bedroom',
-                  'item'  : 'Python Monster'
+                  'item'  : 'Python Monster',
+                  'pic'   : 'bathroom.jpg'
                   },
 
             'Dining Room' : {
                   'desc' : '',
                   'west' : 'Hall',
-                  'south': 'Garage'
+                  'south': 'Garage',
+                  'pic'  : 'diningroom.png'
                },
             'Garage' : {
-                  'desc'  : '',
+                  'desc'  : 'The Garage has a few inactive cars. But, there is a Tesla Model X somehow charging...maybe it can be an escape car?',
                   'north' : 'Dining Room',
-                  'item'  : 'a Tesla X'
+                  'item'  : 'a Tesla X',
+                  'pic'   : 'garage.jpg'
                },
          }
 

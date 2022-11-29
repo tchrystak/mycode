@@ -7,17 +7,8 @@
 {% if not gameover %}
         <p><strong>{{ msg }}</strong></p>
 
-        <p>MAP:<br />
-        <img src="/static/{{ currentroomdict['pic'] }}" alt="User Image">
-        <ul>
-        {% for x in currentroomdict %}
-        {% if x != "item" and x != "desc" %}
-        <li>go {{x}} enters the + {{ currentroomdict[x] }}</li>
-        {% endif %}
-        {% endfor %}
-        </ul>
-
         <p>You are in the {{ currentRoom }}.<br />
+        <img src="/static/{{ currentroomdict['pic'] }}" alt="User Image" width="375"><br />
 
         Inventory:</p>
         <ul>
@@ -29,6 +20,15 @@
                   <p>You see {{ currentroomdict["item"] }}<br />
         {% endif %}
         {{ currentroomdict.desc }}</p>
+
+        <p>MAP:<br />
+        <ul>
+        {% for x in currentroomdict %}
+        {% if x != "item" and x != "desc" and x != "pic" %}
+        <li>go {{x}} enters the {{ currentroomdict[x] }}</li>
+        {% endif %}
+        {% endfor %}
+        </ul>
         <form action = "/action" method = "POST">
             <p><input type = "text" name = "nm"></p>
             <p><input type = "submit" value = "submit"></p>
