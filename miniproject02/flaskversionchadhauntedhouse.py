@@ -27,64 +27,64 @@ inventory = []
 rooms = {
 
             'Hall' : {
-                  'disc'  : '',
+                  'desc'  : 'You wake up and find yourself in an old, dusty, and rusty house. You oddly remember that your wife is missing and you need to find her. You aggressively start looking around the house.',
                   'south' : 'Kitchen',
                   'east'  : 'Dining Room',
                   'west'  : 'Upstairs Hall'
                 },
             'Kitchen' : {
-                  'disc'  : '',
+                  'desc'  : 'It doesn\'t look like the kitchen has been used in years and it smells disgusting. It doesn\'t look like there is anything to pick up in here.',
                   'north' : 'Hall',
                   'item'  : 'Python Monster'
                 },
             'Upstairs Hall' : {
-                  'disc'  : '',
+                  'desc'  : 'It looks like there is a creepy staircase that leads to the second floor...You can hear faintly someone yelling for help. Let\'s check each room.',
                   'east'  : 'Hall',
                   'west'  : 'Nursery',
                   'north' : 'Primary Bedroom',
                   'south' : 'Library'
                 },
             'Nursery' : {
-                  'disc'  : '',
+                  'desc'  : 'The Nursery smells like a barn...you look around and find a dirty diaper. YUCK!',
                   'east'  : 'Upstairs Hall',
                   'item'  : 'a dirty diaper'
                   },
             'Library' : {
-                  'disc'  : '',
+                  'desc'  : 'As you enter the library, you see a book with the words PYTHON on it. Suddenly, the faint yells for help get louder. You start searching around..',
                   'north' : 'Upstairs Hall',
                   'item'  : 'a book',
                   'west'  : 'Secret Entry'
                   },
             'Secret Entry' : {
-                  'disc'  : '',
+                  'desc'  : 'Inside the Secret Entry, you find your hopeless and scared wife happy to see you!',
                   'east'  : 'Library',
                   'item'  : 'wifey'
                   },
             'Primary Bedroom' : {
-                  'disc'  : '',
+                  'desc'  : 'Inside the Primary Bedroom, you find a tesla key fob. There also seems to be an open window...possible escape route? There is also a bathroom connected to the room.',
                   'south' : 'Upstairs Hall',
                   'item'  : 'the car keys',
                   'north' : 'Bathroom',
                   'west'  : 'Open Window'
                   },
             'Open Window' : {
-                  'disc'  : '',
+                  'desc'  : 'Outside the window is a tall fence with a lock that reads NO WAY OUT',
                   'east'  : 'Primary Bedroom',
                   'item'  : 'Python Monster'
                   },
             'Bathroom' : {
-                  'disc'  : '',
+                  'desc'  : 'It smells like someone died in here!',
                   'south' : 'Primary Bedroom',
                   'item'  : 'Python Monster'
                   },
 
             'Dining Room' : {
-                  'disc' : '',
+                  'desc' : '',
                   'west' : 'Hall',
                   'south': 'Garage'
                },
             'Garage' : {
-                  'disc'  : '',
+                  'desc'  : '',
                   'north' : 'Dining Room',
                   'item'  : 'a Tesla X'
                },
@@ -102,7 +102,7 @@ def start():
     # pull the dictionary for the current room
     x= rooms[currentRoom]
     # render the jinja2 html file, pass in all required variables
-    return render_template("status.html", inv=inventory, currentRoom=currentRoom, currentroomdict=x, msg=message, gameover=gameover)
+    return render_template("gamestatus.html", inv=inventory, currentRoom=currentRoom, currentroomdict=x, msg=message, gameover=gameover)
 
 # when a player makes a move, it is POSTED to /action
 @app.route("/action", methods=["POST"])
@@ -142,17 +142,18 @@ def endcheck():
         del rooms[currentRoom]['item']
         inventory.remove("dirty diaper")
         return msg
-        continue
+    
     elif "book" in inventory:
         msg= 'You found a code to delete the Python Monster...NOOOOOO, NOT THE SECRET CODE!! AHHHH.,,.,.,ZAP!'
         del rooms[currentRoom]['item']
         inventory.remove("book")
         return msg
-        continue
+        
     else:
         msg= 'HAHAHA, I GOT YOU... GAME OVER! - The Python Monster'
+        gameover= True
         return msg
-        break
+        
 
 def goget(move):
     # check for go or get, and take appropriate action
