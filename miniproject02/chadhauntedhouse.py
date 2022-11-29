@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+
 # Game Instructions
 def showInstructions():
   #print a main menu and the commands
@@ -25,12 +26,12 @@ def showStatus():
     print('YOU SEE ' + rooms[currentRoom]['item'])
   print('MAP:')
   for x in rooms[currentRoom].keys():
-      if x != "item":
-          print('go ' + x + ' enters the ' + rooms[currentRoom][x])
+      if x != "item" and x != "desc":
+          print('go ' + x + ' enters the ' + rooms[currentRoom][x]) 
   #Player's current status
   print('---------------------------')
   print('YOU ARE IN THE: ' + currentRoom)
-  #Player's current inventory
+ #Player's current inventory
   print('Inventory : ' + str(inventory))
 
 
@@ -41,64 +42,64 @@ inventory = []
 rooms = {
 
             'Hall' : {
-                  'disc'  : '',
+                  'desc'  : '',
                   'south' : 'Kitchen',
                   'east'  : 'Dining Room',
                   'west'  : 'Upstairs Hall'
                 },
             'Kitchen' : {
-                  'disc'  : '',
+                  'desc'  : '',
                   'north' : 'Hall',
                   'item'  : 'Python Monster'
                 },
             'Upstairs Hall' : {
-                  'disc'  : '',
+                  'desc'  : '',
                   'east'  : 'Hall',
                   'west'  : 'Nursery',
                   'north' : 'Primary Bedroom',
                   'south' : 'Library'
                 },
             'Nursery' : {
-                  'disc'  : '',
+                  'desc'  : '',
                   'east'  : 'Upstairs Hall',
                   'item'  : 'a dirty diaper'
                   },
             'Library' : {
-                  'disc'  : '',
+                  'desc'  : '',
                   'north' : 'Upstairs Hall',
                   'item'  : 'a book',
                   'west'  : 'Secret Entry'
                   },
             'Secret Entry' : {
-                  'disc'  : '',
+                  'desc'  : '',
                   'east'  : 'Library',
                   'item'  : 'wifey'
                   },
             'Primary Bedroom' : {
-                  'disc'  : '',
+                  'desc'  : '',
                   'south' : 'Upstairs Hall',
                   'item'  : 'the car keys',
                   'north' : 'Bathroom',
                   'west'  : 'Open Window'
                   },
             'Open Window' : {
-                  'disc'  : '',
+                  'desc'  : '',
                   'east'  : 'Primary Bedroom',
                   'item'  : 'Python Monster'
                   },
             'Bathroom' : {
-                  'disc'  : '',
+                  'desc'  : '',
                   'south' : 'Primary Bedroom',
                   'item'  : 'Python Monster'
                   },
 
             'Dining Room' : {
-                  'disc' : '',
+                  'desc' : '',
                   'west' : 'Hall',
                   'south': 'Garage'
                },
             'Garage' : {
-                  'disc'  : '',
+                  'desc'  : '',
                   'north' : 'Dining Room',
                   'item'  : 'a Tesla X'
                },
